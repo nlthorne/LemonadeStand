@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Day
+    public class Day
     {
-        enum Days
+        double dayNumber;
+        public Day()
         {
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday,
+
+        }
+        public double DayTracker()
+        {
+
+            dayNumber++;
         }
     }
 }

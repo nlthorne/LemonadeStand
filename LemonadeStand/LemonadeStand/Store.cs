@@ -8,20 +8,19 @@ namespace LemonadeStand
 {
     public class Store
     {
-        string supplySelect;        
         int onHandLemon;
         int onHandSugar;
         int onHandIce;
         int onHandCups;
+        Store newStand = new Store();
 
+        public Store()
+        {         
 
-        public Store(int lemons, int sugar, int ice, int cups)
-        {
-            onHandLemon = lemons;
-            onHandSugar = sugar;
-            onHandIce = ice;
-            onHandCups = cups;
         }
+
+       
+
         public int BuyWhichItem()
         {
             Console.WriteLine("Which items do you wish to buy?/n (1)Lemons, (2)Sugar, (3)Ice, (4)Cups or (5)Return to Main Menu?");
@@ -36,19 +35,24 @@ namespace LemonadeStand
                 case 1:
                     Console.WriteLine("How many lemons would like to purchase(3 lemons per pitcher)?");
                     Console.WriteLine("---Lemons costs: $0.50 per lemon---");
-                    //Need to move entered value to BuyItem()                    
+                    BuyLemon();
+                    
+                                      
                     break;
                 case 2:
                     Console.WriteLine("How many cups of sugar would you like to purchase(4 tbsp per pitcher/16tbsp per cup)?");
                     Console.WriteLine("---Sugar costs: $0.50 per cup---");
+                    BuySugar();
                     break;
                 case 3:
                     Console.WriteLine("How many bags of ice would you like to buy(4 ice per pitcher/20 per bag)?");
                     Console.WriteLine("---Ice costs: $2.00 per bag---");
+                    BuyIce();
                     break;
                 case 4:
                     Console.WriteLine("How many sleeves of cups would you like to purchase(20 cups per sleeve)?");
                     Console.WriteLine("---Cups cost: $2.00 per sleeve---");
+                    BuyCups();
                     break;
                 case 5:
                     Console.WriteLine("Come back next time you need supplies!");
@@ -58,24 +62,37 @@ namespace LemonadeStand
                     break;
             }
         }
-        public void BuyLemon()
+        public int BuyLemon()
         {
+            int buyLemons;
+            buyLemons = Console.Read();
+            onHandLemon += buyLemons;
+            return onHandLemon;
             
         }
-        public void BuySugar()
+        public int BuySugar()
         {
-
+            int buySugar;
+            buySugar = Console.Read();
+            onHandSugar += buySugar;
+            return onHandSugar;
         }
-        public void BuyIce()
+        public int BuyIce()
         {
-
+            int buyIce;
+            buyIce = Console.Read();
+            onHandIce += buyIce;
+            return onHandIce;
         }
-        public void BuyCups()
+        public int BuyCups()
         {
-
+            int buyCups;
+            buyCups = Console.Read();
+            onHandCups += buyCups;
+            return onHandCups;
         }
         }
 
     }
 
-}
+

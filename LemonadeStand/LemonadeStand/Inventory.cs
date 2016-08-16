@@ -15,10 +15,10 @@ namespace LemonadeStand
 
         public Inventory(int lemons, int sugar, int ice, int cups)
         {
-            onHandLemon = lemons;
-            onHandSugar = sugar;
-            onHandIce = ice;
-            onHandCups = cups;
+            lemons = onHandLemon;
+            sugar = onHandSugar;
+            ice = onHandIce;
+            cups = onHandCups;
         }
         public void CheckInventory()
         {
