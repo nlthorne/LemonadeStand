@@ -14,13 +14,15 @@ namespace LemonadeStand
         public Player()
         {
             startMoney = 25;
+            
         }
 
         public string GetCompany()
         {
             Console.WriteLine("Give me a name for your company: ");
-            companyName = Console.ReadLine();            
-            return companyName;            
+            companyName = Console.ReadLine();
+            return companyName;     
+                        
         }
     }
 }

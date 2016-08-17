@@ -10,5 +10,9 @@ namespace LemonadeStand
     {
         string name;
 
+        internal void GetCompany()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

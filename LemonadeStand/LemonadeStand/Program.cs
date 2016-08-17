@@ -11,8 +11,8 @@ namespace LemonadeStand
         static void Main(string[] args)
         {
             Game game = new Game();
-            Player.GetCompany();            
-            //GetCompany method info from Player class passed into program..
+            game.GetCompany();            
+            
 
         }
                 
