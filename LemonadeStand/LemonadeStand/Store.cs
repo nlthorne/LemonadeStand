@@ -12,7 +12,8 @@ namespace LemonadeStand
         int onHandSugar;
         int onHandIce;
         int onHandCups;
-        Store newStand = new Store();
+        int onHandCash;
+        
 
         public Store()
         {         
@@ -21,12 +22,12 @@ namespace LemonadeStand
 
        
 
-        public int BuyWhichItem()
+        public void BuyWhichItem()
         {
             Console.WriteLine("Which items do you wish to buy?/n (1)Lemons, (2)Sugar, (3)Ice, (4)Cups or (5)Return to Main Menu?");
             int supplySelect;
             supplySelect = Console.Read();            
-            return supplySelect;
+            BuyInventory(supplySelect);
         }
         public void BuyInventory(int supplySelect)
         {
@@ -34,14 +35,14 @@ namespace LemonadeStand
             {
                 case 1:
                     Console.WriteLine("How many lemons would like to purchase(3 lemons per pitcher)?");
-                    Console.WriteLine("---Lemons costs: $0.50 per lemon---");
+                    Console.WriteLine("---Lemons costs: $1.00 per lemon---");
                     BuyLemon();
                     
                                       
                     break;
                 case 2:
-                    Console.WriteLine("How many cups of sugar would you like to purchase(4 tbsp per pitcher/16tbsp per cup)?");
-                    Console.WriteLine("---Sugar costs: $0.50 per cup---");
+                    Console.WriteLine("How many cups of sugar would you like to purchase(1 cup of sugar per pitcher)?");
+                    Console.WriteLine("---Sugar costs: $1.00 per cup---");
                     BuySugar();
                     break;
                 case 3:
@@ -59,6 +60,7 @@ namespace LemonadeStand
                     break;
                 default:
                     Console.WriteLine("Sorry, that is not a buying option.");
+                    BuyWhichItem();
                     break;
             }
         }
@@ -66,7 +68,7 @@ namespace LemonadeStand
         {
             int buyLemons;
             buyLemons = Console.Read();
-            onHandLemon += buyLemons;
+            onHandLemon += buyLemons;            
             return onHandLemon;
             
         }
@@ -91,8 +93,15 @@ namespace LemonadeStand
             onHandCups += buyCups;
             return onHandCups;
         }
-        }
+        public int ReduceCash(int onHandCash)
+        {
 
+
+            
+            return onHandCash;
+        }
     }
+
+}
 
 

@@ -8,9 +8,11 @@ namespace LemonadeStand
 {
     class Game
     {
-        string name;
-
         internal void GetCompany()
+        {
+            throw new NotImplementedException();
+        }
+        internal void GetCashBox()
         {
             throw new NotImplementedException();
         }

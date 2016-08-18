@@ -11,7 +11,8 @@ namespace LemonadeStand
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.GetCompany();            
+            game.GetCompany();
+            game.GetCashBox();            
             
 
         }

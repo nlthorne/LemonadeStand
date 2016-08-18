@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    public class Day
+    public class CashBox
     {
-        int dayNumber = 1;
-        public Day()
+        public int onHandCash;
+
+        public CashBox(int startCash=25)
         {
             
-
-
         }
-        public void DayTracker()
+        public void GetCashBox()
         {
-            dayNumber++;
+            onHandCash = 25;
+            onHandCash = Console.Read();
         }
-        
     }
 }

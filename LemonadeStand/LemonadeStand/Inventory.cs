@@ -8,10 +8,10 @@ namespace LemonadeStand
 {
     public class Inventory
     {
-        int onHandLemon;
-        int onHandSugar;
-        int onHandIce;
-        int onHandCups;
+        public int onHandLemon;
+        public int onHandSugar;
+        public int onHandIce;
+        public int onHandCups;
 
         public Inventory(int lemons, int sugar, int ice, int cups)
         {
@@ -35,6 +35,7 @@ namespace LemonadeStand
             }
             else
             {
+                Console.WriteLine("See you next time.");
                 //Return user to main interface.
             }
 

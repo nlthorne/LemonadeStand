@@ -9,20 +9,32 @@ namespace LemonadeStand
     class Player
     {
         public string companyName;
-        public decimal startMoney;
+        public int onHandCash;
 
         public Player()
         {
-            startMoney = 25;
             
         }
 
         public string GetCompany()
         {
-            Console.WriteLine("Give me a name for your company: ");
-            companyName = Console.ReadLine();
-            return companyName;     
+            Console.WriteLine("Give a name for your company: ");
+            companyName = Console.ReadLine();            
+            return companyName;
+                            
                         
+        }
+        public int SetCashBox()
+        {
+            CashBox cashbox = new CashBox();
+            cashbox.GetCashBox();
+            return onHandCash;
+        }
+        public int GetCashBox(int onHandCash)
+        {
+            
+
+            return onHandCash;
         }
     }
 }

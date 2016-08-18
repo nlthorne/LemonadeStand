@@ -8,14 +8,27 @@ namespace LemonadeStand
 {
     class Weather
     {
-        enum WeatherType
+        List<string> weatherTypes;
+        string weatherType;
+        public int randomWeather;
+        public Weather()
         {
-            Rainy = 0,
-            Cold = 1,
-            Cloudy = 2,
-            Sunny = 3,
-            Hot = 4,
+            weatherTypes = new List<string>() { "cold", "rainy", "cloudy", "sunny", "hot" };
         }
+        public int GetRandomWeather()
+        {
+            Random random = new Random();
+
+            randomWeather = random.Next(0, weatherTypes.Count);
+            weatherType = weatherTypes[randomWeather];
+            return randomWeather;
+
+        }
+        public string GetWeatherName(int randomWeather)
+        { 
+            return weatherTypes[randomWeather];
+        }
+        
 
     }
 }
