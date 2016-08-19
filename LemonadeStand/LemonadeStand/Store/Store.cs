@@ -13,10 +13,22 @@ namespace LemonadeStand
         int onHandIce;
         int onHandCups;
         int onHandCash;
+        Player player;
+        Lemon lemon;
+        Sugar sugar;
+        Ice ice;
+        Cup cup;
+
+        
         
 
         public Store()
-        {         
+        {
+            player = new Player();
+            lemon = new Lemon();
+            sugar = new Sugar();
+            ice = new Ice();
+            cup = new Cup();
 
         }
 
@@ -53,7 +65,7 @@ namespace LemonadeStand
                 case 4:
                     Console.WriteLine("How many sleeves of cups would you like to purchase(20 cups per sleeve)?");
                     Console.WriteLine("---Cups cost: $2.00 per sleeve---");
-                    BuyCups();
+                    BuySleeve();
                     break;
                 case 5:
                     Console.WriteLine("Come back next time you need supplies!");
@@ -67,39 +79,43 @@ namespace LemonadeStand
         public int BuyLemon()
         {
             int buyLemons;
+            int boughtLemons;            
             buyLemons = Console.Read();
-            onHandLemon += buyLemons;            
+            boughtLemons = buyLemons * 1;//CashBoxDebit()
+            onHandLemon += buyLemons;                     
             return onHandLemon;
             
         }
         public int BuySugar()
         {
             int buySugar;
+            int boughtSugar;
             buySugar = Console.Read();
+            boughtSugar = buySugar * 1;//CashBoxDebit()
             onHandSugar += buySugar;
             return onHandSugar;
         }
         public int BuyIce()
         {
             int buyIce;
+            int boughtIce;
             buyIce = Console.Read();
+            boughtIce = buyIce * 2;//CashBoxDebit()
             onHandIce += buyIce;
             return onHandIce;
         }
-        public int BuyCups()
+        public int BuySleeve()
         {
             int buyCups;
-            buyCups = Console.Read();
+            int buySleeve;
+            int boughtCups;
+            buySleeve = Console.Read();
+            boughtCups = buySleeve * 2;//CashBoxDebit()
+            buyCups = buySleeve * 20;
             onHandCups += buyCups;
             return onHandCups;
         }
-        public int ReduceCash(int onHandCash)
-        {
-
-
-            
-            return onHandCash;
-        }
+        
     }
 
 }

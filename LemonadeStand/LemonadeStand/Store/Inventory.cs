@@ -13,13 +13,12 @@ namespace LemonadeStand
         public int onHandIce;
         public int onHandCups;
 
-        public Inventory(int lemons, int sugar, int ice, int cups)
+        public Inventory()
         {
-            lemons = onHandLemon;
-            sugar = onHandSugar;
-            ice = onHandIce;
-            cups = onHandCups;
+            
         }
+
+
         public void CheckInventory()
         {
             Console.WriteLine("------------------------------------------------");
@@ -41,6 +40,20 @@ namespace LemonadeStand
 
 
         }
+        //public int MakePitcher()
+        //{
+        //    //taking supplies from inventory, making amount of pitchers determined, and updating values of inventory
+              //int pitcherMade;
+              //Console.WriteLine("How many pitchers do you wish to make today?");
+              //pitcherMade = Console.ReadLine();
+              //
 
+
+        //    //return these values to UpdateInventory()
+        //}
+        //public int UpdateInventory()
+        //{
+              //per pitcher made = onHandLemon - 2, onHandSugar - 1, onHandIce - 4,
+        //}
     }
 }

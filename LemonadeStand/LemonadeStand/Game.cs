@@ -8,6 +8,24 @@ namespace LemonadeStand
 {
     class Game
     {
+        Day day;
+        Store store;
+        Player player;
+        Weather weather;
+        Customer customer;
+
+
+
+        public Game()
+        {
+            day = new Day();
+            store = new Store();
+            player = new Player();
+            weather = new Weather();
+            customer = new Customer();
+
+
+        }
         internal void GetCompany()
         {
             throw new NotImplementedException();

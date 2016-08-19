@@ -12,12 +12,22 @@ namespace LemonadeStand
 
         public CashBox(int startCash=25)
         {
-            
+            onHandCash = startCash;
         }
-        public void GetCashBox()
+        public int GetCashBox()
         {
-            onHandCash = 25;
-            onHandCash = Console.Read();
+            return onHandCash;
         }
+        // add and substract money functiond. make sure to not allow you balance to go below 0
+        //public int CashBoxDebit()
+        //{
+            //onHandCash - bought* 
+            //return onHandCash
+        //}
+        //public int CashBoxCredit()
+        //{
+            //onHandCash + AddEndDay
+            //return onHandCash
+        //}
     }
 }

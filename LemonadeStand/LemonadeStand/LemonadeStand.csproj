@@ -44,19 +44,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CashBox.cs" />
+    <Compile Include="Store\Cup.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Day.cs" />
-    <Compile Include="Demand.cs" />
+    <Compile Include="Demand\Demand.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Inventory.cs" />
+    <Compile Include="Store\Ice.cs" />
+    <Compile Include="Store\Lemon.cs" />
+    <Compile Include="Store\Inventory.cs" />
     <Compile Include="LemonadeStand.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomEvents.cs" />
-    <Compile Include="Store.cs" />
+    <Compile Include="Store\Store.cs" />
+    <Compile Include="Store\Sugar.cs" />
     <Compile Include="Userinterface.cs" />
-    <Compile Include="Weather.cs" />
+    <Compile Include="Demand\Weather.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

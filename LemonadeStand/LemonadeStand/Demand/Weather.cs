@@ -11,9 +11,11 @@ namespace LemonadeStand
         List<string> weatherTypes;
         string weatherType;
         public int randomWeather;
+        LemonadeStand lemonadestand;
         public Weather()
         {
             weatherTypes = new List<string>() { "cold", "rainy", "cloudy", "sunny", "hot" };
+            lemonadestand = new LemonadeStand();
         }
         public int GetRandomWeather()
         {

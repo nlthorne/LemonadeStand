@@ -13,6 +13,7 @@ namespace LemonadeStand
         public int priceOpinion;
         public int pricePerCup;
 
+
         public Demand()
         {
             

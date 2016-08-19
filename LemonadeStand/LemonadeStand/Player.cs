@@ -9,32 +9,27 @@ namespace LemonadeStand
     class Player
     {
         public string companyName;
-        public int onHandCash;
+        CashBox cashbox;
+        LemonadeStand lemonadestand;
 
         public Player()
         {
-            
+            cashbox = new CashBox();
+            lemonadestand = new LemonadeStand();
         }
 
-        public string GetCompany()
+        public void SetCompany()
         {
             Console.WriteLine("Give a name for your company: ");
-            companyName = Console.ReadLine();            
+            companyName = Console.ReadLine();  
+                      
+        }
+        public string GetCompany()
+        {
             return companyName;
-                            
-                        
         }
-        public int SetCashBox()
-        {
-            CashBox cashbox = new CashBox();
-            cashbox.GetCashBox();
-            return onHandCash;
-        }
-        public int GetCashBox(int onHandCash)
-        {
-            
+        
 
-            return onHandCash;
-        }
+        
     }
 }
