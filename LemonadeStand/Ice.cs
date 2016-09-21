@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Customer
+    public class Ice
     {
-
-
-        public Customer()
+        public Ice()
         {
 
         }

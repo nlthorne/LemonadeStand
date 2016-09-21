@@ -8,47 +8,35 @@ namespace LemonadeStand
 {
     public class Demand
     {
-        public int thirstType;
-        public int moodType;
+        Price price;
+        Weather weather;
         public int priceOpinion;
         public int pricePerCup;
-
-
+        
         public Demand()
         {
-            
+            price = new Price();
+            weather = new Weather();
         }
-        public int GetThirstType()
-        {
-            Random random = new Random();
-            thirstType = random.Next(0, 4);
-            return thirstType;
-        }
-        public int GetMood()
-        {
-            Random random = new Random();
-            moodType = random.Next(0, 4);
-            return moodType;
-        }
-        public int GetPriceOpinion(int pricePerCup)
+        public int GetPriceOpinion()//pricePerCup should be decimal
         {
             //get the value that player sets as their daily price per cup.
             if (pricePerCup >= 2.50)
             {
                 priceOpinion = 0;
-                
+
             }
             else if (pricePerCup == 2.00)
             {
                 priceOpinion = 1;
-                
+
             }
             else if (pricePerCup == 1.50)
             {
                 priceOpinion = 2;
-                
+
             }
-            else if (pricePerCup == 1.00)
+            else if (pricePerCup <= 1.00)
             {
                 priceOpinion = 3;
             }
@@ -56,10 +44,9 @@ namespace LemonadeStand
             {
                 Console.WriteLine("Something went wrong in the GetPriceOpinion Function");
                 //error handling goes here.
-              
+
             }
             return priceOpinion;
         }
-
     }
 }

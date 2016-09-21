@@ -8,19 +8,15 @@ namespace LemonadeStand
 {
     public class Store
     {
-        int onHandLemon;
-        int onHandSugar;
-        int onHandIce;
-        int onHandCups;
-        int onHandCash;
         Player player;
         Lemon lemon;
         Sugar sugar;
         Ice ice;
         Cup cup;
+        
 
-        
-        
+
+
 
         public Store()
         {
@@ -29,16 +25,17 @@ namespace LemonadeStand
             sugar = new Sugar();
             ice = new Ice();
             cup = new Cup();
+            
 
         }
 
-       
+
 
         public void BuyWhichItem()
         {
             Console.WriteLine("Which items do you wish to buy?/n (1)Lemons, (2)Sugar, (3)Ice, (4)Cups or (5)Return to Main Menu?");
             int supplySelect;
-            supplySelect = Console.Read();            
+            supplySelect = Console.Read();
             BuyInventory(supplySelect);
         }
         public void BuyInventory(int supplySelect)
@@ -49,8 +46,6 @@ namespace LemonadeStand
                     Console.WriteLine("How many lemons would like to purchase(3 lemons per pitcher)?");
                     Console.WriteLine("---Lemons costs: $1.00 per lemon---");
                     BuyLemon();
-                    
-                                      
                     break;
                 case 2:
                     Console.WriteLine("How many cups of sugar would you like to purchase(1 cup of sugar per pitcher)?");
@@ -76,48 +71,25 @@ namespace LemonadeStand
                     break;
             }
         }
-        public int BuyLemon()
+
+        private void BuySleeve()
         {
-            int buyLemons;
-            int boughtLemons;            
-            buyLemons = Console.Read();
-            boughtLemons = buyLemons * 1;//CashBoxDebit()
-            onHandLemon += buyLemons;                     
-            return onHandLemon;
-            
+            throw new NotImplementedException();
         }
-        public int BuySugar()
+
+        private void BuyIce()
         {
-            int buySugar;
-            int boughtSugar;
-            buySugar = Console.Read();
-            boughtSugar = buySugar * 1;//CashBoxDebit()
-            onHandSugar += buySugar;
-            return onHandSugar;
+            throw new NotImplementedException();
         }
-        public int BuyIce()
+
+        private void BuySugar()
         {
-            int buyIce;
-            int boughtIce;
-            buyIce = Console.Read();
-            boughtIce = buyIce * 2;//CashBoxDebit()
-            onHandIce += buyIce;
-            return onHandIce;
+            throw new NotImplementedException();
         }
-        public int BuySleeve()
+
+        private void BuyLemon()
         {
-            int buyCups;
-            int buySleeve;
-            int boughtCups;
-            buySleeve = Console.Read();
-            boughtCups = buySleeve * 2;//CashBoxDebit()
-            buyCups = buySleeve * 20;
-            onHandCups += buyCups;
-            return onHandCups;
+            throw new NotImplementedException();
         }
-        
     }
-
 }
-
-

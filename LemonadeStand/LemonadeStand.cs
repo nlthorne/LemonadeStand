@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Userinterface
+    public class LemonadeStand
     {
-
-
     }
 }

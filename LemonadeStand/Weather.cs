@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Weather
+    public class Weather
     {
         List<string> weatherTypes;
         string weatherType;
         public int randomWeather;
+        public int customerWeather;
         LemonadeStand lemonadestand;
         public Weather()
         {
@@ -27,10 +28,13 @@ namespace LemonadeStand
 
         }
         public string GetWeatherName(int randomWeather)
-        { 
+        {
             return weatherTypes[randomWeather];
         }
-        
-
+        public void GetCustomerWeather()
+        {
+            customerWeather = randomWeather;
+            return customerWeather;
+        }
     }
 }

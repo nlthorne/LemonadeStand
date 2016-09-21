@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LemonadeStand
+﻿namespace LemonadeStand
 {
-    class Game
+    public class Game
     {
         Day day;
         Store store;
         Player player;
         Weather weather;
         Customer customer;
-
-
+        
+        
 
         public Game()
         {
@@ -23,16 +17,14 @@ namespace LemonadeStand
             player = new Player();
             weather = new Weather();
             customer = new Customer();
-
+        }
+        public void RunGame()
+        {
 
         }
-        internal void GetCompany()
+        public void MainMenu()
         {
-            throw new NotImplementedException();
-        }
-        internal void GetCashBox()
-        {
-            throw new NotImplementedException();
+
         }
     }
 }

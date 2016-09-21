@@ -8,10 +8,12 @@ namespace LemonadeStand
 {
     public class Day
     {
+        decimal pricePerCup;
         int dayNumber = 1;
         Inventory inventory;
         Customer customer;
         LemonadeStand lemonadestand;
+        Weather weather;
 
 
         public Day()
@@ -19,16 +21,22 @@ namespace LemonadeStand
             inventory = new Inventory();
             customer = new Customer();
             lemonadestand = new LemonadeStand();
+            weather = new Weather();
 
         }
         public void DayTracker()
         {
             dayNumber++;
         }
-        public void GetDemands()
+        public decimal GetSellPrice()
         {
-
+            Console.WriteLine("What price do you want to sell at today?");
+            pricePerCup = Convert.ToDecimal(Console.ReadLine());
+            return pricePerCup;
         }
-        
+        //public void GetDemands()
+        //{
+
+        //}
     }
 }
