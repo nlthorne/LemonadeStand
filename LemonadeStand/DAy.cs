@@ -8,8 +8,9 @@ namespace LemonadeStand
 {
     public class Day
     {
-        decimal pricePerCup;
-        int dayNumber = 1;
+        public decimal pricePerCup;
+        public int dayNumber = 1;
+        public int gameDays;
         Inventory inventory;
         Customer customer;
         LemonadeStand lemonadestand;
@@ -19,7 +20,7 @@ namespace LemonadeStand
         public Day()
         {
             inventory = new Inventory();
-            customer = new Customer();
+            customer = new Customer(customer.name);
             lemonadestand = new LemonadeStand();
             weather = new Weather();
 

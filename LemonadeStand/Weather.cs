@@ -9,13 +9,15 @@ namespace LemonadeStand
     public class Weather
     {
         List<string> weatherTypes;
+        List<int> forecast;
         string weatherType;
         public int randomWeather;
         public int customerWeather;
         LemonadeStand lemonadestand;
         public Weather()
         {
-            weatherTypes = new List<string>() { "cold", "rainy", "cloudy", "sunny", "hot" };
+            weatherTypes = new List<string>() { "Cold", "Rain", "Cloudy", "Sunny", "Hot" };
+            forecast = new List<int>();
             lemonadestand = new LemonadeStand();
         }
         public int GetRandomWeather()
@@ -35,6 +37,10 @@ namespace LemonadeStand
         {
             customerWeather = randomWeather;
             return customerWeather;
+        }
+        public int CreateForecast()
+        {
+
         }
     }
 }

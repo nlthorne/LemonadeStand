@@ -30,6 +30,7 @@ namespace LemonadeStand
             GetThirst();
             demand.GetPriceOpinion();
             weather.GetCustomerWeather();// fix this logic and how to pull in the randomWeather result for customer reaction
+            this.name = name;
             
         }
 
@@ -38,7 +39,7 @@ namespace LemonadeStand
             Random random = new Random();
             for (int i = 0; i < numberofCustomers; i++)
             {
-                Customer customer = new Customer(name +i);
+                Customer customer = new Customer(name + i);
                 customers.Add(customer);
                 Thread.Sleep(5);
             }
