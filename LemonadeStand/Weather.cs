@@ -8,39 +8,54 @@ namespace LemonadeStand
 {
     public class Weather
     {
-        List<string> weatherTypes;
-        List<int> forecast;
-        string weatherType;
-        public int randomWeather;
-        public int customerWeather;
-        LemonadeStand lemonadestand;
+        public int temperature;
+        public string conditions;
+        public List<string> clouds = new List<string> { "Sunny", "Overcast", "Rainy" };
+
+       
         public Weather()
         {
-            weatherTypes = new List<string>() { "Cold", "Rain", "Cloudy", "Sunny", "Hot" };
-            forecast = new List<int>();
-            lemonadestand = new LemonadeStand();
         }
-        public int GetRandomWeather()
-        {
-            Random random = new Random();
 
-            randomWeather = random.Next(0, weatherTypes.Count);
-            weatherType = weatherTypes[randomWeather];
-            return randomWeather;
+        public void SetWeather()
+        {
+            int temperatureMin = 30;
+            int temperatureMax = 100;
 
-        }
-        public string GetWeatherName(int randomWeather)
-        {
-            return weatherTypes[randomWeather];
-        }
-        public void GetCustomerWeather()
-        {
-            customerWeather = randomWeather;
-            return customerWeather;
-        }
-        public int CreateForecast()
-        {
+            Random random = new Random(DateTime.Now.Millisecond);
 
+            temperature = random.Next(temperatureMin, temperatureMax);
+
+            Random index = new Random(DateTime.Now.Millisecond);
+
+            conditions = clouds[index.Next(0, clouds.Count())];
+        }
+
+        public void SetWeather(Weather weatherForecast)
+        {
+            int weatherVariance = 5;
+
+            Random random = new Random(DateTime.Now.Millisecond);
+            temperature = random.Next(weatherForecast.temperature - weatherVariance, weatherForecast.temperature + weatherVariance);
+            Random index = new Random(DateTime.Now.Millisecond);
+            conditions = clouds[index.Next(0, clouds.Count())];
+        }
+
+        public void DisplayWeather(Weather weather)
+        {
+            Console.WriteLine("The weather forecast is {1} and {2}", weather.temperature, weather.conditions);
+        }
+
+        public int GetWeatherTemperature()
+        {
+            return temperature;
+        }
+
+        public string GetWeatherConditions()
+        {
+            return conditions;
         }
     }
+
+   
 }

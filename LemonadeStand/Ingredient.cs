@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    public class LemonadeStand
+    public abstract class Ingredient
     {
+        public int numOfDaysBeforeExpiration;
+
+        public Ingredient()
+        {
+
+        }
+
     }
 }

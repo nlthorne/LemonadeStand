@@ -1,63 +1,90 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
 
 namespace LemonadeStand
 {
     public class Customer
     {
-        public List<Customer> customers;
-        public int thirst;
-        public int mood;
-        public int numberOfCustomer;
-        public string name = "Customer";
-        Weather weather;
-        Price price;
-        Demand demand;
-        
+        public double chanceOfPurchase;
+        static Random customerChance = new Random(DateTime.Now.Millisecond);
+        public int temperatureLevelOne = 30;
+        public int temperatureLevelTwo = 60;
+        public int temperatureLevelThree = 75;
+        public double temperatureLevelOneFactor = .20;
+        public double temperatureLevelTwoFactor = .75;
+        public double temperatureLevelThreeFactor = .90;
+        public double temperatureLevelFourFactor = 1.25;
+        public double sunnyFactor = 1.1;
+        public double overcastFactor = .90;
+        public double rainyFactor = .30;
+        public double priceLevelOne = .25;
+        public double priceLevelOneFactor = 1.5;
+        public double priceLevelTwo = .50;
+        public double priceLevelTwoFactor = 1.25;
+        public double priceLevelThree = .75;
+        public double priceLevelThreeFactor = 1.00;
+        public double priceLevelFour = .99;
+        public double priceLevelFourFactor = .90;
+        public double priceLevelFiveFactor = .75;
 
-        public Customer(string name)
+        public Customer(Weather weather, double price)
         {
-            weather = new Weather();
-            price = new Price();
-            demand = new Demand();
-            customers = new List<Customer>();
-            GetMood();
-            GetThirst();
-            demand.GetPriceOpinion();
-            weather.GetCustomerWeather();// fix this logic and how to pull in the randomWeather result for customer reaction
-            this.name = name;
             
-        }
+            chanceOfPurchase = customerChance.Next(50,100);
 
-        public List<Customer> GetCustomers(int numberofCustomers)
-        {
-            Random random = new Random();
-            for (int i = 0; i < numberofCustomers; i++)
+            if (weather.GetWeatherTemperature() < temperatureLevelOne)
             {
-                Customer customer = new Customer(name + i);
-                customers.Add(customer);
-                Thread.Sleep(5);
+                chanceOfPurchase *= temperatureLevelOneFactor;
+            }
+            else if (weather.GetWeatherTemperature() < temperatureLevelTwo)
+            {
+                chanceOfPurchase *= temperatureLevelTwoFactor;
+            }
+            else if (weather.GetWeatherTemperature() < temperatureLevelThree)
+            {
+                chanceOfPurchase *= temperatureLevelThreeFactor;
+            }
+            else
+            {
+                chanceOfPurchase *= temperatureLevelFourFactor;
             }
 
-            //add weather, price, random mood, random thirst to each specific customer
-            return customers;
-        }
-        public int GetThirst()
-        {
-            Random random = new Random();
-            thirst = random.Next(0, 4);
-            return thirst;
-        }
-        public int GetMood()
-        {
-            Random random = new Random();
-            mood = random.Next(0, 4);
-            return mood;
+            switch (weather.GetWeatherConditions())
+            {
+                case "Sunny":
+                    chanceOfPurchase *= sunnyFactor;
+                    break;
+                case "Overcast":   
+                    chanceOfPurchase *= overcastFactor;
+                    break;
+                case "Rainy":
+                    chanceOfPurchase *= rainyFactor;
+                    break;
+            }
+
+            if (price < priceLevelOne)
+            {
+                chanceOfPurchase *= priceLevelOneFactor;
+            }
+            else if (price < priceLevelTwo)
+            {
+                chanceOfPurchase *= priceLevelTwoFactor;
+            }
+            else if (price < priceLevelThree)
+            {
+                chanceOfPurchase *= priceLevelThreeFactor;
+            }
+            else if (price < priceLevelFour)
+            {
+                chanceOfPurchase *= priceLevelFourFactor;
+            }
+            else
+            {
+                chanceOfPurchase *= priceLevelFiveFactor;
+            }
         }
     }
 }

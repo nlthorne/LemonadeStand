@@ -8,42 +8,101 @@ namespace LemonadeStand
 {
     public class Inventory
     {
-        public List<Lemon> lemons;
-        public List<Cup> cups;
-        public List<Ice> ice;
-        public List<Sugar> sugar;
-        
+        public List<Lemon> lemonInventory;
+        public List<Sugar> sugarInventory;
+        public List<Ice> iceInventory;
+        public List<Cup> cupInventory;
+
         public Inventory()
         {
-            lemons = new List<Lemon>();
-            cups = new List<Cup>();
-            ice = new List<Ice>();
-            sugar = new List<Sugar>();
+            lemonInventory = new List<Lemon> { };
+            sugarInventory = new List<Sugar> { };
+            iceInventory = new List<Ice> { };
+            cupInventory = new List<Cup> { };
 
         }
 
-
-        public void CheckInventory()
+        public int GetLemonInventoryCount()
         {
-            Console.WriteLine("------------------------------------------------");
-            Console.WriteLine("Current Inventory:/n Lemons: {0}/n Sugar: {1}/n Ice: {2}/n Cups: {3}", lemons.Count, sugar.Count, ice.Count, cups.Count);
-            Console.WriteLine("------------------------------------------------");
-            Console.WriteLine("Do you wish to purchase supplies? yes/no?");
-            string buy = Console.ReadLine();
-            if (buy == "yes")
-            {
-                //Go to Class Store, BuyWhichItem method
-                Store store = new Store();
-                store.BuyWhichItem();
-            }
-            else
-            {
-                Console.WriteLine("See you next time.");
-                
-            }
-            //onHandLemon = lemons.Count;  for later use: if you want to check specifically how many on hand from list
-            //onHandCups = cups.Count;
+            return lemonInventory.Count();
+        }
+        public int GetSugarInventoryCount()
+        {
+            return sugarInventory.Count();
+        }
 
+        public int GetCupInventoryCount()
+        {
+            return cupInventory.Count();
+        }
+
+        public int GetIceInventoryCount()
+        {
+            return iceInventory.Count();
+        }
+
+        public void AddToSugarInventory()
+        {
+            Sugar sugar = new Sugar();
+            sugarInventory.Add(sugar);
+        }
+
+        public void AddToLemonInventory()
+        {
+            Lemon lemon = new Lemon();
+            lemonInventory.Add(lemon);
+        }
+
+        public void AddToIceInventory()
+        {
+            Ice ice = new Ice();
+            iceInventory.Add(ice);
+        }
+
+        public void AddToCupInventory()
+        {
+            Cup cup = new Cup();
+            cupInventory.Add(cup);
+        }
+
+        public int GetLemonsExpiredCount()
+        {
+            return lemonInventory.Count(lemon => lemon.numOfDaysBeforeExpiration == 0);
+        }
+
+        public int GetSugarExpiredCount()
+        {
+            return sugarInventory.Count(sugar => sugar.numOfDaysBeforeExpiration == 0);
+        }
+        public int GetIceExpiredCount()
+        {
+            return iceInventory.Count(ice => ice.numOfDaysBeforeExpiration == 0);
+        }
+        public int GetCupExpiredCount()
+        {
+            return cupInventory.Count(cup => cup.numOfDaysBeforeExpiration == 0);
+        }
+
+        public void RemoveCupInventory()
+        {
+            cupInventory.RemoveAt(0);
+        }
+
+        public void RemoveIceInventory(int quantity)
+        {
+            iceInventory.RemoveRange(0, quantity);
+        }
+
+        public void RemoveLemonInventory(int quantity)
+        {
+           lemonInventory.RemoveRange(0, quantity);
+        }
+
+        public void RemoveSugarInventory(int quantity)
+        {
+            sugarInventory.RemoveRange(0, quantity);
         }
     }
 }
+
+ 

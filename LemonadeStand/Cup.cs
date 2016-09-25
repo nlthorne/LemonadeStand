@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    public class Cup
+    public class Cup : Ingredient
     {
         public Cup()
         {
-
+            numOfDaysBeforeExpiration = 100;
+        }
+        public void SubtractDayBeforeExpiration()
+        {
+            numOfDaysBeforeExpiration -= 1;
         }
     }
 }

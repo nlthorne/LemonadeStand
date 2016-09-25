@@ -8,88 +8,160 @@ namespace LemonadeStand
 {
     public class Store
     {
-        Player player;
-        Lemon lemon;
-        Sugar sugar;
-        Ice ice;
-        Cup cup;
-        
 
-
-
+        public Inventory storeInventory;
+        public double cashOnHand;
+        public int dailyCupsSold;
+        public double totalRevenue;
+        public double totalExpenses;
+        public int maxNumOfDays;
+        public double minimumLemonCashNeeded;
+        public double minimumSugarCashNeeded;
+        public double minimumIceCashNeeded;
+        public double minimumCupCashNeeded;
 
         public Store()
         {
-            player = new Player();
-            lemon = new Lemon();
-            sugar = new Sugar();
-            ice = new Ice();
-            cup = new Cup();
-            
+            storeInventory = new Inventory();
+            cashOnHand = 20.00;
+            maxNumOfDays = 0;
+            totalRevenue = 0;
+            totalExpenses = 0;
+            minimumLemonCashNeeded = .60;
+            minimumSugarCashNeeded = .60;
+            minimumIceCashNeeded = .80;
+            minimumCupCashNeeded = 3.00;
+
+        }
+ 
+        public void SetStoreRevenue(double revenue)
+        {
+            totalRevenue += revenue;
+        }
+
+        public void AddToStoreExpenses(double expense)
+        {
+            totalExpenses += expense;
+        }
+
+        public void AddToStoreCashOnHand(double revenue)
+        {
+            cashOnHand += revenue;
+        }
+
+        public void SubtractFromCashOnHand(double cost)
+        {
+            cashOnHand -= cost;
 
         }
 
-
-
-        public void BuyWhichItem()
+        public double GetCashOnHand()
         {
-            Console.WriteLine("Which items do you wish to buy?/n (1)Lemons, (2)Sugar, (3)Ice, (4)Cups or (5)Return to Main Menu?");
-            int supplySelect;
-            supplySelect = Console.Read();
-            BuyInventory(supplySelect);
+            return cashOnHand;
         }
-        public void BuyInventory(int supplySelect)
+
+        public void RemoveSpoiledInventory()
         {
-            switch (supplySelect)
+            storeInventory.lemonInventory.RemoveAll(lemon => lemon.numOfDaysBeforeExpiration == 0);
+            storeInventory.iceInventory.RemoveAll(ice => ice.numOfDaysBeforeExpiration == 0);
+            storeInventory.sugarInventory.RemoveAll(sugar => sugar.numOfDaysBeforeExpiration == 0);
+            storeInventory.cupInventory.RemoveAll(cup => cup.numOfDaysBeforeExpiration == 0);
+        }
+
+        public void SubtractSpoiledDay()
+        {
+            foreach (Lemon lemon in storeInventory.lemonInventory)
             {
-                case 1:
-                    Console.WriteLine("How many lemons would like to purchase(3 lemons per pitcher)?");
-                    Console.WriteLine("---Lemons costs: $1.00 per lemon---");
-                    BuyLemon();
-                    break;
-                case 2:
-                    Console.WriteLine("How many cups of sugar would you like to purchase(1 cup of sugar per pitcher)?");
-                    Console.WriteLine("---Sugar costs: $1.00 per cup---");
-                    BuySugar();
-                    break;
-                case 3:
-                    Console.WriteLine("How many bags of ice would you like to buy(4 ice per pitcher/20 per bag)?");
-                    Console.WriteLine("---Ice costs: $2.00 per bag---");
-                    BuyIce();
-                    break;
-                case 4:
-                    Console.WriteLine("How many sleeves of cups would you like to purchase(20 cups per sleeve)?");
-                    Console.WriteLine("---Cups cost: $2.00 per sleeve---");
-                    BuySleeve();
-                    break;
-                case 5:
-                    Console.WriteLine("Come back next time you need supplies!");
-                    break;
-                default:
-                    Console.WriteLine("Sorry, that is not a buying option.");
-                    BuyWhichItem();
-                    break;
+                lemon.SubtractDayBeforeExpiration();
+            }
+
+            foreach (Sugar sugar in storeInventory.sugarInventory)
+            {
+                sugar.SubtractDayBeforeExpiration();
+            }
+
+            foreach (Cup cup in storeInventory.cupInventory)
+            {
+                cup.SubtractDayBeforeExpiration();
+            }
+
+            foreach (Ice ice in storeInventory.iceInventory)
+            {
+                ice.SubtractDayBeforeExpiration();
             }
         }
 
-        private void BuySleeve()
+        public void RemoveUsedInventory(Recipe recipe)
         {
-            throw new NotImplementedException();
+            storeInventory.RemoveLemonInventory(recipe.GetNumberOfLemons());
+            storeInventory.RemoveSugarInventory(recipe.GetNumberOfSugar());
         }
 
-        private void BuyIce()
+        public bool EnoughInventory(Recipe recipe)
         {
-            throw new NotImplementedException();
+
+            if (storeInventory.lemonInventory.Count() < recipe.numOfLemons)
+            {
+                Console.WriteLine("You don't have enough lemons for your recipe.");
+                return false;
+            }
+            else if (storeInventory.iceInventory.Count() < recipe.numOfIce)
+            {
+                Console.WriteLine("You don't have enough ice for your recipe.");
+                return false;
+            }
+            else if (storeInventory.sugarInventory.Count() < recipe.numOfSugar)
+            {
+                Console.WriteLine("You don't have enough sugar for your recipe.");
+                return false;
+            }
+            
+            return true;
         }
 
-        private void BuySugar()
+        public bool NoInventory()
         {
-            throw new NotImplementedException();
+            if ((storeInventory.lemonInventory.Count() == 0) ||
+                    (storeInventory.sugarInventory.Count() == 0) ||
+                    (storeInventory.iceInventory.Count() == 0) ||
+                    (storeInventory.cupInventory.Count() == 0))
+            {
+                Console.WriteLine("You don't have sufficient inventory to make lemonade.");
+                return true;
+            }
+            return false;
         }
 
-        private void BuyLemon()
+        public bool IsBankrupt()
         {
-            throw new NotImplementedException();
+            if ((storeInventory.lemonInventory.Count() == 0) && (GetCashOnHand() < minimumLemonCashNeeded) ||
+                    (storeInventory.sugarInventory.Count() == 0 && (GetCashOnHand() < minimumSugarCashNeeded)) ||
+                    (storeInventory.iceInventory.Count() == 0 && (GetCashOnHand() < minimumIceCashNeeded)) ||
+                    (storeInventory.cupInventory.Count() == 0 && (GetCashOnHand() < minimumCupCashNeeded)))
+                    
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public double GetTotalRevenue()
+        {
+            return totalRevenue;
+        }
+
+        public double GetTotalExpenses()
+        {
+            return totalExpenses;
+        }
+
+        public Inventory GetStoreInventory()
+        {
+            return storeInventory;
         }
     }
 }
+
