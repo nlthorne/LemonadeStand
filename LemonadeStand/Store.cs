@@ -126,7 +126,7 @@ namespace LemonadeStand
                     (storeInventory.iceInventory.Count() == 0) ||
                     (storeInventory.cupInventory.Count() == 0))
             {
-                Console.WriteLine("You don't have sufficient inventory to make lemonade.");
+                Console.WriteLine("You don't have enough supplies to make lemonade.");
                 return true;
             }
             return false;

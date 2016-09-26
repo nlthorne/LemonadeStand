@@ -36,7 +36,7 @@ namespace LemonadeStand
 
         public string SetPlayerName()
         {
-            Console.WriteLine("Please enter your name?");
+            Console.WriteLine("Please enter your name:");
             return Console.ReadLine();
         }
 
@@ -51,7 +51,7 @@ namespace LemonadeStand
                     Console.WriteLine("1: 5 for $0.60");
                     Console.WriteLine("2: 20 for $2.00");
                     Console.WriteLine("3: 50 for $4.00");
-                    Console.WriteLine("4: No Purchase. ");
+                    Console.WriteLine("4: Purchase none. ");
                     Console.WriteLine("Please enter (1-4) to select:");
                     break;
 
@@ -60,7 +60,7 @@ namespace LemonadeStand
                     Console.WriteLine("1: 5 for $0.60");
                     Console.WriteLine("2: 20 for $2.00");
                     Console.WriteLine("3: 100 for $9.00");
-                    Console.WriteLine("4: No Purchase. ");
+                    Console.WriteLine("4: Purchase none. ");
                     Console.WriteLine("Please enter (1-4) to select:");
                     break;
 
@@ -69,7 +69,7 @@ namespace LemonadeStand
                     Console.WriteLine("1: 100 for $0.80");
                     Console.WriteLine("2: 250 for $1.80");
                     Console.WriteLine("3: 500 for $2.50");
-                    Console.WriteLine("4: No Purchase. ");
+                    Console.WriteLine("4: Purchase none. ");
                     Console.WriteLine("Please enter (1-4) to select:");
                     break;
 
@@ -78,7 +78,7 @@ namespace LemonadeStand
                     Console.WriteLine("1: 50 for $3.00");
                     Console.WriteLine("2: 100 for $5.00");
                     Console.WriteLine("3: 200 for $8.00");
-                    Console.WriteLine("4: No Purchase. ");
+                    Console.WriteLine("4: Purchase none. ");
                     Console.WriteLine("Please enter (1-4) to select:");
                     break;
             }
@@ -121,7 +121,7 @@ namespace LemonadeStand
 
             while ((!int.TryParse(Console.ReadLine(), out quantity)) || ((quantity < recipeIngredientQuantityMin) || (quantity > recipeIngredientQuantityMax)))
             {
-                Console.WriteLine("Please enter a quantity between 1-10.");
+                Console.WriteLine("Please enter an amount between 1-10.");
 
             }
             return quantity;

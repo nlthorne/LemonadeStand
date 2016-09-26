@@ -237,17 +237,17 @@ namespace LemonadeStand
 
             if (store.storeInventory.GetLemonInventoryCount() < recipe.GetNumberOfLemons())
             {
-                Console.WriteLine("You don't have enough lemons for your recipe.");
+                Console.WriteLine("Not enough lemons for your recipe.");
                 return false;
             }
             else if (store.storeInventory.GetIceInventoryCount() < recipe.GetNumberOfIce())
             {
-                Console.WriteLine("You don't have enough ice for your recipe.");
+                Console.WriteLine("Not enough ice for your recipe.");
                 return false;
             }
             else if (store.storeInventory.GetSugarInventoryCount() < recipe.GetNumberOfSugar())
             {
-                Console.WriteLine("You don't have enough sugar for your recipe.");
+                Console.WriteLine("Not enough sugar for your recipe.");
                 return false;
             }
             return true;
